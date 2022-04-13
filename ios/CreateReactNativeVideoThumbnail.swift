@@ -44,8 +44,8 @@ class CreateReactNativeVideoThumbnail: NSObject {
             guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
                 return false
             }
-            let existingImageFilePath = getSavedImage(named: fileName)
-        if existingImageFilePath.isEmpty {
+        //     let existingImageFilePath = getSavedImage(named: fileName)
+        // if existingImageFilePath.isEmpty {
             //add to storage
             do {
                 try data.write(to: directory.appendingPathComponent(fileName + ".png")!)
@@ -56,11 +56,11 @@ class CreateReactNativeVideoThumbnail: NSObject {
                 print(error.localizedDescription)
                 return false
             }
-        } else {
-            //fetch image
-            print("in else", existingImageFilePath)
-            return existingImageFilePath
-        }
+        // } else {
+        //     //fetch image
+        //     print("in else", existingImageFilePath)
+        //     return existingImageFilePath
+        // }
             
         }
     
