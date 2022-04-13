@@ -1,18 +1,29 @@
 import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-create-react-native-video-thumbnail';
+import { StyleSheet, View, Text, Image } from 'react-native';
+import { getVideoThumbnail } from 'react-native-create-react-native-video-thumbnail';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    getVideoThumbnail(
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+      'BigBuckBunny'
+    ).then((res) => {
+      console.log('Video thumbnail', res);
+      setResult(res);
+    });
   }, []);
 
   return (
     <View style={styles.container}>
       <Text>Result: {result}</Text>
+      <Image
+        source={{
+          uri: result,
+        }}
+        style={{ height: 300, width: 300 }}
+      />
     </View>
   );
 }

@@ -6,17 +6,25 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo managed workflow\n';
 
-const CreateReactNativeVideoThumbnail = NativeModules.CreateReactNativeVideoThumbnail
-  ? NativeModules.CreateReactNativeVideoThumbnail
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+const CreateReactNativeVideoThumbnail =
+  NativeModules.CreateReactNativeVideoThumbnail
+    ? NativeModules.CreateReactNativeVideoThumbnail
+    : new Proxy(
+        {},
+        {
+          get() {
+            throw new Error(LINKING_ERROR);
+          },
+        }
+      );
 
 export function multiply(a: number, b: number): Promise<number> {
   return CreateReactNativeVideoThumbnail.multiply(a, b);
+}
+
+export function getVideoThumbnail(
+  url: string,
+  fileName: string
+): Promise<number> {
+  return CreateReactNativeVideoThumbnail.getVideoThumbnail(url, fileName);
 }
