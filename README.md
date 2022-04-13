@@ -11,11 +11,11 @@ npm install react-native-create-react-native-video-thumbnail
 ## Usage
 
 ```js
-import { multiply } from 'react-native-create-react-native-video-thumbnail';
+import { getVideoThumbnail } from 'react-native-create-react-native-video-thumbnail';
 
 // ...
 
-const result = await multiply(3, 7);
+const result = await getVideoThumbnail('video-url', 'fileName');
 ```
 
 ## Contributing
